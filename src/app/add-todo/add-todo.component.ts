@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { ToDo } from '../todo';
+import { Component, OnInit } from '@angular/core';
 import { TODOS } from '../todos';
 
 @Component({
@@ -15,7 +14,17 @@ export class AddTodoComponent implements OnInit {
   ngOnInit() {
   }
 
+  getTodoLargestId() {
+    var largestNum = 0;
+    for(var i = 0, len = TODOS.length; i < len; i++){
+      if(TODOS[i].id >= largestNum){
+        largestNum = TODOS[i].id + 1;
+      }
+    }
+    return largestNum;
+  }
+
   onClick(){
-    TODOS.push({name: this.todoName, id: 21, isDone: false});
+    TODOS.push({name: this.todoName, id: this.getTodoLargestId(), isDone: false});
   }
 }
