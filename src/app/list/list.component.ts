@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TODOS } from '../todos';
+import { ToDo } from '../todo';
 
 @Component({
   selector: 'app-list',
@@ -13,5 +14,9 @@ export class ListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  RemoveTodo(todo:ToDo){
+      TODOS.splice(TODOS.indexOf(todo), 1);
   }
 }

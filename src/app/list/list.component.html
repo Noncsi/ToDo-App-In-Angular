@@ -1,10 +1,9 @@
 <h2>TO DO List</h2>
 <ul>
     <li *ngFor = "let todo of todos">
-        <input  type="checkbox" 
-                [checked]="todo.isDone"
-                [(ngModel)]="todo.isDone"/>
+        <input  type="checkbox" [checked]="todo.isDone" [(ngModel)]="todo.isDone"/>
         <label>{{todo.id}} {{todo.name}}</label>
+        <button (click)="RemoveTodo(todo)">delete</button>
     </li>
 </ul>
 

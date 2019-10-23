@@ -16,7 +16,7 @@ export class AddTodoComponent implements OnInit {
 
   getTodoLargestId() {
     var largestNum = 0;
-    for(var i = 0, len = TODOS.length; i < len; i++){
+    for(var i = 0; i = TODOS.length; i++){
       if(TODOS[i].id >= largestNum){
         largestNum = TODOS[i].id + 1;
       }
