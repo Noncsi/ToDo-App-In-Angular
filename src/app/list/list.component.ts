@@ -19,4 +19,13 @@ export class ListComponent implements OnInit {
   RemoveTodo(todo:ToDo){
       TODOS.splice(TODOS.indexOf(todo), 1);
   }
+
+  saveEdit(newName, selectedTodoId){
+    for(var i = 0; i <= this.todos.length; i++){
+      if(this.todos[i].id == selectedTodoId){
+        this.todos[i].name = newName;
+        break;
+      }
+    }
+  }
 }

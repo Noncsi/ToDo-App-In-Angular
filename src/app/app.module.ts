@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { InlineEditComponent } from './inline-edit/inline-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    InlineEditComponent
   ],
   imports: [
     BrowserModule,
