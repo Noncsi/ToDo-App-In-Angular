@@ -1,14 +1,8 @@
-<h2>TO DO List</h2>
 <ul>
     <li *ngFor = "let todo of todos">
-        <input  type="checkbox" [checked]="todo.isDone" [(ngModel)]="todo.isDone"/>
-        
-        <app-inline-edit [todoName]='todo.name' (focusOut)='saveEdit($event, todo.id)'>      
-            
-        </app-inline-edit>
-         <button (click)="RemoveTodo(todo)">delete</button> 
+            <input  class="todoRow" type="checkbox" [checked]="todo.isDone" [(ngModel)]="todo.isDone"/>
+            <app-inline-edit class="todoRow" [todoName]='todo.name' (focusOut)='saveEdit($event, todo.id)'></app-inline-edit>
+            <button id="button-delete" class="todoRow" (click)="RemoveTodo(todo)">x</button> 
     </li>
 </ul>
-
-<h2>end of list component</h2>
 <app-add-todo></app-add-todo>

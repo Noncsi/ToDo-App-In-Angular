@@ -1,6 +1,6 @@
-<div *ngIf='!editMode' 
+<h4 *ngIf='!editMode' 
     (click)='editMode=true'> {{todoName}}
-</div>
+</h4>
 <input *ngIf='editMode' 
         (focusout)="onFocusOut()" 
         [(ngModel)]='todoName'
