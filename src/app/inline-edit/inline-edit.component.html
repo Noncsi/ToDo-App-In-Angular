@@ -1,7 +1,2 @@
-<h4 *ngIf='!editMode' 
-    (click)='editMode=true'> {{todoName}}
-</h4>
-<input *ngIf='editMode' 
-        (focusout)="onFocusOut()" 
-        [(ngModel)]='todoName'
-        (focusout)="editMode=false">
+<h4 *ngIf='!editMode' (click)='editMode=true'>title: {{todo.name}}</h4>
+<input *ngIf='editMode' value="{{todo.name}}" [(ngModel)]='todo.name' (focusout)="updateTodo(todo)">

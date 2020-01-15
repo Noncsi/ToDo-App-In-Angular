@@ -21,6 +21,11 @@ h1 {
     font-weight: 100;
 }
 
+a {
+    text-decoration: none;
+    color:inherit
+}
+
 
 h4 {
     margin: 0;
@@ -57,21 +62,29 @@ input[type=text]{
     width: 25em;
     border: none;
     border-radius: 4px;
+}
 
+button {
+    border: none;
+    background-color: #00adb5;
+    padding: 10px;
+    border-radius: 4px;
+    color:white;
+    cursor: pointer;
 }
 
 #button-delete {
     background-color: transparent;
     color: #ff2e63;
-    border:none;
     float: right;
     font-family: cursive;
+    padding: 0px;
 }
 
 #button-add {
-    border: none;
-    background-color: #00adb5;
-    padding: 10px;
     margin-left: 10px;
-    border-radius: 4px;
+}
+
+#div-add-todo {
+    text-align: center;
 }

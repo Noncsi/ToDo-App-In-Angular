@@ -1,4 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { TodoService } from '../todo.service';
+import { ToDo } from '../todo';
 
 @Component({
   selector: 'app-inline-edit',
@@ -7,15 +10,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class InlineEditComponent implements OnInit {
 
-  @Input() todoName: string;
-  @Output() focusOut: EventEmitter<string> = new EventEmitter<string>();
+  @Input() todo: ToDo;
   editMode = false;
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() { }
 
-  onFocusOut() {
-    this.focusOut.emit(this.todoName);
+  updateTodo(todo:ToDo){
+    this.todoService.updateTodo(todo).subscribe();
+    this.editMode = false;
   }
 }

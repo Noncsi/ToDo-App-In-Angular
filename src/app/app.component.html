@@ -1,2 +1,7 @@
-<h1>Let's do this!</h1>
-<app-list></app-list>
+<nav>
+    <h1><a routerLink="">Let's do this!</a></h1>
+    <div style="text-align:center;">    
+        <button *ngIf="router.url !== '/list'" routerLink="/list">Your list</button>
+    </div>
+</nav>
+<router-outlet></router-outlet>

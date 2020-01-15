@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TODOS } from '../todos';
 import { ToDo } from '../todo';
-import { preserveWhitespacesDefault } from '@angular/compiler';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-list',
@@ -10,23 +9,36 @@ import { preserveWhitespacesDefault } from '@angular/compiler';
 })
 export class ListComponent implements OnInit {
 
-  todos = TODOS;
+  todos: ToDo[];
+  todoName: string ='';
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
+    this.todoService.getTodos().subscribe(data => this.todos = data)
   }
 
-  RemoveTodo(todo:ToDo){
-      TODOS.splice(TODOS.indexOf(todo), 1);
+  removeTodo(todo : ToDo): void {
+    this.todos = this.todos.filter(t => t !== todo);
+    this.todoService.removeTodo(todo).subscribe();
   }
 
-  saveEdit(newName, selectedTodoId){
-    for(var i = 0; i <= this.todos.length; i++){
-      if(this.todos[i].id == selectedTodoId){
-        this.todos[i].name = newName;
-        break;
+  getTodoLargestId() {
+    this.todoService.getTodos().subscribe(data => this.todos = data)
+    if(this.todos == null) {return};
+    var largestNum = 0;
+    for(var i = 0; i < this.todos.length; i++){
+      if(this.todos[i].id >= largestNum){
+        largestNum = this.todos[i].id + 1;
       }
     }
+    return largestNum;
+  }
+
+  onClick(){
+    this.todoName = this.todoName.trim();
+    const todoId = this.getTodoLargestId();
+    let newTodo = new ToDo(); newTodo.id = todoId; newTodo.name = this.todoName; newTodo.isDone = false;
+    this.todoService.addTodo(newTodo).subscribe(todo => {this.todos.push(todo);});
   }
 }
